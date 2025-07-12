@@ -15,6 +15,9 @@ from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 import streamlit as st
 
+
+tf.config.set_visible_devices([], 'GPU')
+
 #-- Data Collection
 # ---Data Preproccessing
 with open('hamlet.txt', 'r') as file:
