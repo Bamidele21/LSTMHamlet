@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 import nltk
 import os
-os.environ['CUDA_VISIBLE_DEVICES']= '-1' #disables GPU 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -13,10 +12,11 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
+
+
+
+
 import streamlit as st
-
-
-tf.config.set_visible_devices([], 'GPU')
 
 #-- Data Collection
 # ---Data Preproccessing
@@ -71,8 +71,13 @@ model.build(input_shape=(None, max_seq_len))
 #model.save('hamlet_next_word_model.h5')
 
 # Load the model
-model = load_model('hamlet_next_word_model.h5')
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+@st.cache_resource
+def load_model_from_file():
+    model = load_model('hamlet_next_word_model.h5')
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    return model
+
+model = load_model_from_file()
 
 
 
