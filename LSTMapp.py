@@ -75,7 +75,6 @@ model.build(input_shape=(None, max_seq_len))
 @st.cache_resource
 def load_model_from_file():
     model = load_model('hamlet_next_word_model.h5')
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
 
 model = load_model_from_file()
