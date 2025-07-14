@@ -14,7 +14,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 
-tf.config.set_visible_devices([]. 'GPU') 
+tf.config.set_visible_devices([], 'GPU') 
 
 
 import streamlit as st
