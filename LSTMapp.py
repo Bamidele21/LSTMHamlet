@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import nltk
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1' #Disables GPU
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -13,7 +14,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 
-
+tf.config.set_visible_devices([]. 'GPU') 
 
 
 import streamlit as st
